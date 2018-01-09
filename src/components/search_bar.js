@@ -46,15 +46,20 @@ class SearchBar extends Component { // -> equivalent to class SearchBar extends 
         // )
 
         return (
-            <div>
+            <div className="search-bar">
                 <input
                     value={this.state.term}
-                    onChange={event => this.setState({term: event.target.value})}/>
+                    onChange={event => this.onInputChange(event.target.value)} />
             </div>
         )
 
 
         // and also because its a single line we can ommit the carly braclets
+    }
+
+    onInputChange (term){
+        this.setState({term});
+        this.props.onSearchTermChange(term);
     }
 
     // onInputChange (event) { // the "event" object describes the context or information about the event that occured
